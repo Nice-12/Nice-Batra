@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="chatbox">
+            <div class="chatlog" id="chatlog">
+                <div class="chat bot">Hi, I'm the chatbot created by Nice. How can I help you today?</div>
+                {% if user_text and bot_response %}
+                    <div class="chat user">{{ user_text }}</div>
+                    <div class="chat bot">{{ bot_response }}</div>
+                {% endif %}
+            </div>
+            <form id="chatForm" action="/get" method="post">
+                <input type="text" name="msg" id="msg" placeholder="Type your message here..." autocomplete="off">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
